@@ -26,9 +26,44 @@ const getOneProject = async ({ sku }) => {
       return null;
     }
     return result;
+};
+
+const updateProduct = async ({name, price, description, image, sku, quantity, isFavorite,  _id}) => {
+    const result = await Product.findOneAndUpdate({_id}, {
+        name,
+        price,
+        description,
+        image,
+        sku,
+        quantity,
+        isFavorite,
+    });
+    return result;
+};
+
+const getAllProducts = async () => {
+    const result = await Product.find();
+    return result;
 }
+
+const getOneProduct = async ({id}) => {
+    const result = await Product.findById(id);
+    return result;
+}
+
+const deleteProduct = async ({id}) => {
+    const result = await Product.findByIdAndDelete(id);
+    return result;
+}
+
+
+
 
 module.exports = {
   createProduct,
   getOneProject,
+  updateProduct,
+  getAllProducts,
+  getOneProduct,
+  deleteProduct,
 };
