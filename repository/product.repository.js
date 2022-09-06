@@ -70,7 +70,6 @@ const deleteProduct = async ({ id }) => {
 
 const getFavoriteProducts = async () => {
   const data = await Product.find({ isFavorite: true });
-  console.log("repository result ", data);
   return data;
 };
 
