@@ -10,8 +10,8 @@ const {
 
 router.post("/add", addProduct);
 router.put("/update/:id", updateProduct);
-router.get("/", getAllProducts);
 router.get("/fav", getFavoriteProducts);
+router.get("/", getAllProducts);
 router.get("/:id", getOneProduct);
 router.delete("/:id", deleteProduct);
 
