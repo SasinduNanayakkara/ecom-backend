@@ -73,6 +73,11 @@ const getFavoriteProducts = async () => {
   return data;
 };
 
+const getProductsByName = async (name) => {
+  const data = await Product.find(name);
+  return data;
+}
+
 module.exports = {
   createProduct,
   getOneProject,
@@ -81,4 +86,5 @@ module.exports = {
   getOneProduct,
   deleteProduct,
   getFavoriteProducts,
+  getProductsByName,
 };

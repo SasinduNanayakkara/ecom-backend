@@ -7,6 +7,7 @@ const {
   getProduct,
   productDelete,
   productFavorite,
+  productByName,
 } = require("../services/product.service");
 
 const addProduct = async (req, res) => {
@@ -120,6 +121,28 @@ const getFavoriteProducts = async (req, res) => {
   });
 };
 
+const getProductsByName = async (req, res) => {
+  const name = req.query;
+  console.log(name);
+  const result = await productByName(name);
+  if (!result) {
+    return makeResponse({
+      res,
+      status: 500,
+      message: "Error with getting data",
+    });
+  }
+  if (result.status) {
+    return makeResponse({ res, ...result });
+  }
+  return makeResponse({
+    res,
+    status: 200,
+    data: result,
+    message: "Products by name",
+  });
+}
+
 module.exports = {
   addProduct,
   updateProduct,
@@ -127,4 +150,5 @@ module.exports = {
   getOneProduct,
   deleteProduct,
   getFavoriteProducts,
+  getProductsByName,
 };

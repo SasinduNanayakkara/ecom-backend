@@ -6,11 +6,13 @@ const {
   getOneProduct,
   deleteProduct,
   getFavoriteProducts,
+  getProductsByName,
 } = require("../controllers/product");
 
 router.post("/add", addProduct);
 router.put("/update/:id", updateProduct);
 router.get("/fav", getFavoriteProducts);
+router.get("/search", getProductsByName);
 router.get("/", getAllProducts);
 router.get("/:id", getOneProduct);
 router.delete("/:id", deleteProduct);

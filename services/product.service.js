@@ -6,6 +6,7 @@ const {
   getOneProduct,
   deleteProduct,
   getFavoriteProducts,
+  getProductsByName,
 } = require("../repository/product.repository");
 const productRegister = async ({
   name,
@@ -89,6 +90,14 @@ const productFavorite = async () => {
   return result;
 };
 
+const productByName = async (name) => {
+  const result = await getProductsByName(name);
+  if (!result) {
+    return { status: 404, message: "Product not found" };
+  }
+  return result;
+}
+
 module.exports = {
   productRegister,
   productUpdate,
@@ -96,4 +105,5 @@ module.exports = {
   getProduct,
   productDelete,
   productFavorite,
+  productByName,
 };
