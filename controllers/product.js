@@ -123,7 +123,6 @@ const getFavoriteProducts = async (req, res) => {
 
 const getProductsByName = async (req, res) => {
   const name = req.query;
-  console.log(name);
   const result = await productByName(name);
   if (!result) {
     return makeResponse({
